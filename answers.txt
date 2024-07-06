@@ -1,0 +1,55 @@
+Answers to the text questions go here.
+
+Part-1 Q. When is the Flesch Kincaid score *not* a valid, robust or reliable estimator of text difficulty? Give two conditions. (Text answer, 200 words maximum).
+A. The Flesch-Kincaid (FK) score might not always accurately reflect the difficulty of a text under certain circumstances:
+
+1.Usage of Specialized or Technical Language:
+The FK score measures readability by looking at sentence length and syllables per word. However, it doesn't account for complex vocabulary. Texts with a lot of technical terms or jargon—such as those found in scientific, legal, or medical fields—might have simple sentence structures and short words, which can result in a low FK score. This can misleadingly suggest that the text is easy to read, even though the specialized vocabulary may be challenging for readers not familiar with the topic.
+
+2. Irregular or Non-Standard Text Structures:
+The FK score is designed for standard prose and may not work well with texts that have unusual structures, such as poetry, scripts, or experimental writing. These texts often use unconventional punctuation, fragmented sentences, and creative layouts. For example, poetry may split sentences over several lines or use unique punctuation, leading to inaccurately high FK scores. Similarly, texts with a lot of dialogue might have short sentences, resulting in low FK scores, despite the complex content that requires contextual understanding.
+In these scenarios, the FK score's reliance on sentence length and syllable count does not capture the true complexity and difficulty of the text, making it an inadequate tool for assessing readability.
+
+In these cases, the FK score's focus on sentence length and syllable count doesn't capture the true complexity and difficulty of the text, making it an inadequate measure of readability.
+
+Part-2 Q. 
+A. The custom tokenizer function is crafted to preprocess text data for machine learning and Natural Language Processing (NLP) tasks through several important steps:
+
+1. Tokenization:
+
+The function utilizes word_tokenize from the NLTK library to break the input text into individual words, which is essential for further processing.
+
+2. Removing Punctuation and Stopwords:
+
+After tokenization, the function removes punctuation and stopwords. Punctuation is filtered out by keeping only alphabetic tokens using word.isalpha(). Common words such as "and", "the", "is", etc., are excluded using a predefined list of stopwords from the NLTK library (stopwords.words('english')). These words are often not useful for distinguishing between different texts or classes and can be removed to streamline the feature space.
+
+3. Custom Processing:
+
+This section is where further text preprocessing could be added if needed, such as stemming or lemmatization to convert words to their base forms, handling special characters, or applying other text normalization techniques.
+
+Tokenizer Performance:
+
+1. Enhanced Feature Selection:
+
+By filtering out stopwords and punctuation, the tokenizer ensures that the features used for model training are more relevant and informative. This helps reduce noise and enhances the quality of the input data.
+
+2. Enhanced Context Capture:
+
+Including unigrams, bi-grams, and tri-grams in the TfidfVectorizer allows the model to capture more context, understanding word combinations and phrases better. This is crucial for text classification tasks and can improve the model's ability to distinguish between different classes.
+
+3. Flexibility and Extensibility:
+
+The custom tokenizer serves as a base that can be further enhanced. Additional steps like stemming, lemmatization, or handling specific patterns (e.g., dates, numbers) can be easily integrated to customize the tokenizer for particular requirements.
+
+Performance Evaluation
+To evaluate the custom tokenizer, we compared it with the default tokenizer provided by TfidfVectorizer, focusing on two main metrics: the macro-average F1 score and the classification report for both RandomForest and SVM classifiers. Here's what we observed:
+
+F1 Score:
+
+The F1 score evaluates how well the model balances precision and recall. A higher F1 score indicates better overall performance. With the custom tokenizer, there was a notable improvement in the F1 score compared to the default tokenizer, demonstrating the effectiveness of the custom tokenizer in enhancing model performance.
+
+Classification Report:
+
+The classification report provides detailed metrics for each class, including precision, recall, and F1 scores. The custom tokenizer led to a more balanced performance across different classes, resulting in more accurate predictions for each class and reducing the issue of classes with no predicted samples.
+
+In conclusion, the custom tokenizer function is crucial for preparing text data for machine learning tasks. By cleaning the text and focusing on significant words, it enhances data quality and helps models perform better. Our evaluation confirms that it improves classifier performance. With further refinements, it can be tailored to specific needs and domains, potentially leading to even better results in text classification tasks.
